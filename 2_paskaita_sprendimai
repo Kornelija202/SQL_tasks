@@ -1,0 +1,112 @@
+▪ Ištraukti visus filmus kurie trunka daugiau (>) negu 100 minučių
+SELECT film_id, length, title FROM film
+WHERE length > '100';
+
+▪ Ištraukti adresą, kuris/ie yra rajone Ahal
+SELECT address_id, address, district from address
+WHERE district  = 'Ahal'
+
+Parašykite užklausą, kuri pateiktų visą informaciją apie filmus, kurių nuomos
+trukmė yra 3 dienos
+SELECT * from film
+WHERE rental_duration = '3';
+
+Pateikite filmo pavadinimą, aprašymą, išleidimo metus, reitingą, kur reitingas
+yra G
+SELECT title, description, release_year, rating from film
+WHERE rating = 'G';
+
+Ištraukti visus filmus, kurie yra trumpesni nei 50 min arba ilgesni nei 140 min.
+SELECT * FROM film
+WHERE length < '50' or length > '140';
+
+Ištraukti visus adresus, kurie neturi pašto kodo ar telefono numerio
+SELECT * FROM address 
+WHERE postal_code = '' or phone = '';
+
+Ištraukti filmus, kurių nuomos laikotarpis ilgesnis nei 5 dienos ir
+pakeitimo kaina mažiau arba lygu 20
+SELECT * FROM film 
+WHERE rental_duration > '5' and replacement_cost <= '20';
+Rezultatas (204 eilutės)
+
+Ištraukti filmus, kurių nuomos kaina daugiau už 3 dolerius ir reitingas 
+lygus R
+SELECT * FROM film
+WHERE rental_rate > '3' and rating = 'R';
+Rezultatas (65 eilutės)
+
+Pateikite pirmus 5 klientų vardus ir pavardes klientų lentelėje
+SELECT first_name, last_name FROM customer LIMIT 5;
+
+▪ Raskite 10 trumpiausių filmų
+SELECT * FROM film
+order by length asc
+LIMIT 10;
+
+Išrinkite filmus kurių išsinuomojimo kaina (rental_rate) yra tarp 1 ir 2.99
+SELECT title, rental_rate FROM film
+WHERE rental_rate BETWEEN 1 AND 2.99;
+Rezultatas (323 eilutės)
+
+Išrinkite filmus, kurių trukmė yra tarp 47 ir 100 min
+SELECT title, length FROM film
+WHERE length BETWEEN 47 AND 100;
+Rezultatas (385 eilutės)
+
+Išrinkite filmų pavadinimus, aprašymus, išleidimo metus, nuomos trukmę ir kainą, kai
+nuomos kaina yra 4.99 arba mažiau, o nuomos trukmė 5 arba 6 dienos.
+SELECT title, description, release_year, rental_duration, rental_rate from film
+where rental_rate <= 4.99 in (select rental_duration = 5 or 6);
+
+Pateikite ilgiausiai trunkančių filmų pavadinimus ir trukmę.
+
+Išrinkite filmų pavadinimus, aprašymus, kurių pavadinimas prasideda ALI
+SELECT title, description FROM film
+where title like 'ALI%';
+Rezultatas (3 eilutės)
+
+Rasti filmus, kurių pavadinimo antra raidė yra L
+SELECT title from film
+where title like '_L%';
+Rezultatas (53 eilutės)
+
+1. Parašykite SQL užklausą, kuri pateiktų visą informaciją apie filmus, kurių nuomos trukmė yra 6.
+SELECT * FROM film 
+WHERE rental_duration = '6';
+Rezultatas (212 eilutės)
+
+2. Parašykite SQL užklausą, kuri pateiktų filmo pavadinimą, aprašymą, išleidimo metus, reitingą,
+kai reitingas yra PG-13
+SELECT title, description, release_year, rating FROM film
+WHERE rating = 'PG-13';
+Rezultatas (223 eilutės)
+
+3. Parašykite SQL užklausą, kuri ištrauktų filmo pavadinimą, nuomos trukmę, nuomos kainą,
+kai nuomos kaina yra 0.99 arba daugiau, o nuomos trukmė 6 ir 7.
+SELECT title, rental_duration, rental_rate FROM film
+WHERE rental_rate >= 0.99  IN(rental_duration = 6 AND 7);
+
+4. Parašykite užklausą, kuri ištraukia visus filmų pavadinimus, kurie prasideda raide „z“.
+SELECT title from film
+WHERE title LIKE 'Z%';
+
+5. Parašykite užklausą, kuri ištraukia filmo pavadinimą, filmo trukmę, nuomos kainą, žanro tipą, kurių
+žanras yra “Documentary”, pirmiausia surūšiuojant nuo trumpiausių iki ilgiausių, paskui pagal nuomos
+kainą nuo brangiausių iki pigiausių.
+
+SELECT 
+    film.title AS filmo_pavadinimas, 
+    film.length AS trukme, 
+    film.rental_rate AS nuomos_kaina
+FROM 
+    film
+JOIN 
+    film_category ON film.film_id = film_category.film_id
+JOIN 
+    category ON film_category.category_id = category.category_id
+WHERE 
+    category.name = 'Documentary'
+ORDER BY 
+    film.length ASC, 
+    film.rental_rate DESC;
