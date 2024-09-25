@@ -74,7 +74,7 @@ GROUP BY first_name
 ORDER BY how_many desc;
 
 6. Kiek ilgiausiai trunka filmas, saugomas lentoje film?
-SELECT length FROM film
-order by length desc;
+SELECT max(length) FROM film;
+Rezultatas(185)
 
 
