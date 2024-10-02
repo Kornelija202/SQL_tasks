@@ -1,4 +1,4 @@
-Pateikite adresus su pašto kodais, miesto pavadinimu bei šalimi.
+▪ Pateikite adresus su pašto kodais, miesto pavadinimu bei šalimi.
 
 SELECT 
     address.address AS adresas, 
@@ -11,9 +11,9 @@ JOIN
     city ON address.city_id = city.city_id
 JOIN 
     country ON city.country_id = country.country_id;
+
     
-Rasti informaciją apie kiekvienos parduotuvės
-klientų mokėjimus, rezultatą surikiuojant pagal
+▪ Rasti informaciją apie kiekvienos parduotuvės klientų mokėjimus, rezultatą surikiuojant pagal
 apmokėjimų sumas nuo didžiausios iki mažiausios.
     
     SELECT 
@@ -36,8 +36,7 @@ ORDER BY
     suma DESC;
     
     
-● Kiek kiekvienas darbuotojas surinko klientų
-apmokėjimų (kiekis, suma)?
+▪ Kiek kiekvienas darbuotojas surinko klientų apmokėjimų (kiekis, suma)?
 
 SELECT 
     staff.staff_id AS darbuotojo_id, 
@@ -55,7 +54,7 @@ ORDER BY
     apmokejimu_suma ASC;
     
 
-Parašykite SQL užklausą, kuri pateikia sąrašą su pardavėjo vardu ir pavarde, 
+▪ Parašykite SQL užklausą, kuri pateikia sąrašą su pardavėjo vardu ir pavarde, 
 kliento vardu ir pavarde, ir parduotuvės ID, kuriai priklauso ir pardavėjas, ir klientas.
 
 SELECT 
@@ -70,8 +69,9 @@ JOIN
     customer ON staff.store_id = customer.store_id
 ORDER BY 
     parduotuves_id;
+
     
-  Koks vidutinis filmų ilgis pagal kategorijas?
+▪ Koks vidutinis filmų ilgis pagal kategorijas?
   
     SELECT 
     category.name AS kategorija, 
@@ -88,8 +88,7 @@ ORDER BY
     vidutinis_filmu_ilgis DESC;
     
     
-    ▪ Kiek klientė Amy Lopez sumokėjo už filmo Rocky War
-nuomą?
+▪ Kiek klientė Amy Lopez sumokėjo už filmo Rocky War nuomą?
 
 SELECT 
     customer.first_name AS first_name,
