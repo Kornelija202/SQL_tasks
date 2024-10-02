@@ -33,6 +33,7 @@ JOIN
 WHERE 
     customer.first_name = 'Sarah' 
     AND customer.last_name = 'Lewis';
+
     
 ▪ Kiek nuomos užsakymų įvykdė darbuotojas Mike Hillyer
 per 2005 metų liepos mėnesį?
@@ -49,11 +50,10 @@ WHERE
     staff.first_name = 'Mike' 
     AND staff.last_name = 'Hillyer'
     AND rental.rental_date BETWEEN '2005-07-01' AND '2005-07-31';
+
     
-▪ Parašyti užklausą, kuri grąžina
-apmokėjimo id, datą ir sumas, kurios
-yra mažesnės nei apmokėjimo sumų
-vidurkis.
+▪ Parašyti užklausą, kuri grąžina apmokėjimo id, datą ir sumas, 
+kurios yra mažesnės nei apmokėjimo sumų vidurkis.
 
 SELECT 
     payment.payment_id AS apmokejimo_id, 
@@ -75,9 +75,8 @@ WHERE
     film.replacement_cost = (SELECT MIN(replacement_cost) FROM film);
     
     
-Parašykite SQL užklausą, pateikiančią klientų
-id, sumokamą mokestį už nuomą. Tuos klientus, 
-kurie sumoka už nuomą vienu kartu virš 10, pažymėkite kaip
+Parašykite SQL užklausą, pateikiančią klientų id, sumokamą mokestį už nuomą. 
+Tuos klientus, kurie sumoka už nuomą vienu kartu virš 10, pažymėkite kaip
 „Virš 10“, o išleidžiančius iki 10, pažymėkite „Iki 10“. 
 Surūšiuokite pagal nuomos mokestį mažėjimo tvarka.
 
@@ -94,6 +93,7 @@ JOIN
     customer ON payment.customer_id = customer.customer_id
 ORDER BY 
     payment.amount DESC;
+
     
 1. Kurioje įmokos stulpelio pozicijoje yra taškas? Rezultatą surūšiuokite
 pagal įmokas mažėjimo tvarka. Naudokite lentelę „payment“.
@@ -107,8 +107,8 @@ FROM
 ORDER BY 
     payment.amount DESC;
     
-2. Iš kiek simbolių susideda filmo „Alone Trip“ pavadinimas? Naudokite
-lentelę „film“.
+2. Iš kiek simbolių susideda filmo „Alone Trip“ pavadinimas? 
+Naudokite lentelę „film“.
 
 SELECT 
     CHAR_LENGTH(film.title) AS simboliu_kiekis
@@ -116,6 +116,7 @@ FROM
     film
 WHERE 
     film.title = 'Alone Trip';
+
     
 3. Kokio filmo aprašymas turi daugiausia žodžių?
 
@@ -129,6 +130,7 @@ ORDER BY
     zodziu_kiekis DESC
 LIMIT 1;
 
+
 4. Kokio filmo aprašymas ilgiausias?
 
 SELECT 
@@ -140,6 +142,7 @@ FROM
 ORDER BY 
     aprasymo_ilgis DESC
 LIMIT 1;
+
 
 5. Pateikite filmus ir jų išleidimo metus viename stulpelyje, pavadinimu Filmai
 
